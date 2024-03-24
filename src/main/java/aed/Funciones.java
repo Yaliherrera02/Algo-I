@@ -11,17 +11,17 @@ class Funciones {
         double res = Math.sqrt(x * x + y * y);
         return res;
     }
-
-    boolean esPar(int n) {
+    /*boolean esPar2(int n) {
         boolean res = true;
         if (n % 2 != 0)
         {
             res = false;
         }
         return res;
-    }
-    boolean esPar2(int n){
-        if (n % 2 != 0)
+    }*/
+
+    boolean esPar(int n){
+        if (n % 2 == 0)
         {
             return true;
         }
@@ -79,7 +79,7 @@ class Funciones {
         return false;
     }
 
-    boolean esPrimo2(int n){
+    /*boolean esPrimo2(int n){
         int divisores = 0;
         for (int i = 1; i <= n; i++) {
             if (n % i == 0) {
@@ -90,7 +90,8 @@ class Funciones {
             return true;
         }
         return false;
-    }
+    }*/
+
     int sumatoria(int[] numeros) {
         if (numeros == null || numeros.length == 0) {
             return 0; 
@@ -103,28 +104,28 @@ class Funciones {
     }
     
 
-int busqueda(int[] numeros, int buscado) {
-    for (int i = 0; i < numeros.length; i++) {
-        if (buscado == numeros[i]) {
-            return i; 
+    int busqueda(int[] numeros, int buscado) {
+        for (int i = 0; i < numeros.length; i++) {
+            if (buscado == numeros[i]) {
+                return i; 
+            }
         }
+        return -1; 
     }
-    return -1; 
-}
 
-boolean tienePrimo(int[] numeros) {
-    if (numeros == null || numeros.length == 0) {
-        return false; // Arreglo nulo o vacío
-    }
-    int i = 0; // Inicializamos el índice para el bucle
-    while (i < numeros.length) {
-        if (esPrimo(numeros[i])) {
-            return true; // Apenas encontramos un primo, devolvemos true
+    boolean tienePrimo(int[] numeros) {
+        if (numeros == null || numeros.length == 0) {
+            return false; // Arreglo nulo o vacío
         }
-        i++; // Incrementamos el índice para la próxima iteración
+        int i = 0; // Inicializamos el índice para el bucle
+        while (i < numeros.length) {
+            if (esPrimo(numeros[i])) {
+                return true; // Apenas encontramos un primo, devolvemos true
+            }
+            i++; // Incrementamos el índice para la próxima iteración
+        }
+        return false; // No se encontraron primos en el arreglo
     }
-    return false; // No se encontraron primos en el arreglo
-}
 
     boolean todosPares(int[] numeros) {
         if (numeros == null || numeros.length == 0) {
@@ -141,12 +142,33 @@ boolean tienePrimo(int[] numeros) {
     }
 
     boolean esPrefijo(String s1, String s2) {
-        // COMPLETAR
-        return false;
+        int i =0;
+        if (s1.length()>s2.length()){
+         return false;
+        }
+ 
+        while (i<s1.length()){
+         if (s1.charAt(i)!=s2.charAt(i)){
+             return false;
+         }
+         i++;
+         }
+         return true;
+ 
+     }
+     boolean esSufijo(String s1, String s2) {
+        if (s1.length() > s2.length()) {
+            return false;
+        }
+        
+        int i = s2.length() - 1; 
+        
+        for (int j = s1.length() - 1; j >= 0; j--) {
+            if (s1.charAt(j) != s2.charAt(i)) {
+                return false;
+            }
+            i--; 
+        }
+        return true;
     }
-
-    boolean esSufijo(String s1, String s2) {
-        // COMPLETAR
-        return false;
-    }
-}
+}    
